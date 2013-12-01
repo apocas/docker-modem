@@ -1,5 +1,5 @@
 {
-  "name": "docker.model",
+  "name": "docker-model",
   "description": "Docker remote API network layer module.",
   "version": "0.1.0",
   "author": "Pedro Dias <petermdias@gmail.com>",
