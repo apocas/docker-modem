@@ -21,11 +21,11 @@
   },
   "devDependencies": {
     "chai": "~1.7.0",
-    "mocha": "~1.12.0"
+    "mocha": "~1.17.0"
   },
   "main": "./lib/modem",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec"
+    "test": "make test"
   },
   "engines": {
     "node": ">= 0.8"
