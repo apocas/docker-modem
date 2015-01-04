@@ -4,24 +4,22 @@ docker-modem
 [![NPM](https://nodei.co/npm/docker-modem.png?downloads=true&downloadRank=true)](https://nodei.co/npm/docker-modem/)
 [![NPM](https://nodei.co/npm-dl/docker-modem.png?months=6&height=3)](https://nodei.co/npm/docker-modem/)
 
-Docker remote API network layer module.
+[Docker](https://www.docker.com/) Remote API network layer module.
 
-If you want to learn how to use `docker-modem` check these use cases:
-* https://github.com/appersonlabs/docker.io
-* https://github.com/apocas/dockerode
+`docker-modem` will help you talking with [Docker](https://www.docker.com/), since it already implements all the network strategies needed to support all [Docker](https://www.docker.com/)'s Remote API endpoints.
 
-## license
+It is the module powering (network wise) [dockerode](https://github.com/apocas/dockerode) and other modules.
 
-Pedro Dias <abru.pt>
+## Tests
 
-licensed under the apache license, version 2.0 (the "license");
-you may not use this file except in compliance with the license.
-you may obtain a copy of the license at
+Tests are implemented using `mocha` and `chai`. Run them with `npm test`.
 
-    http://www.apache.org/licenses/LICENSE-2.0.html
+## License
 
-unless required by applicable law or agreed to in writing, software
-distributed under the license is distributed on an "as is" basis,
-without warranties or conditions of any kind, either express or implied.
-see the license for the specific language governing permissions and
-limitations under the license.
+Pedro Dias - [@pedromdias](https://twitter.com/pedromdias)
+
+Licensed under the Apache license, version 2.0 (the "license"); You may not use this file except in compliance with the license. You may obtain a copy of the license at:
+
+http://www.apache.org/licenses/LICENSE-2.0.html
+
+Unless required by applicable law or agreed to in writing, software distributed under the license is distributed on an "as is" basis, without warranties or conditions of any kind, either express or implied. See the license for the specific language governing permissions and limitations under the license.
