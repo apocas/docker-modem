@@ -4,9 +4,9 @@ docker-modem
 [![NPM](https://nodei.co/npm/docker-modem.png?downloads=true&downloadRank=true)](https://nodei.co/npm/docker-modem/)
 [![NPM](https://nodei.co/npm-dl/docker-modem.png?months=6&height=3)](https://nodei.co/npm/docker-modem/)
 
-[Docker](https://www.docker.com/) Remote API network layer module.
+[Docker](https://www.docker.com/)'s Remote API network layer module.
 
-`docker-modem` will help you talking with [Docker](https://www.docker.com/), since it already implements all the network strategies needed to support all [Docker](https://www.docker.com/)'s Remote API endpoints.
+`docker-modem` will help you talking with `Docker`, since it already implements all the network strategies needed to support all `Docker`'s Remote API endpoints.
 
 It is the module powering (network wise) [dockerode](https://github.com/apocas/dockerode) and other modules.
 
