@@ -39,6 +39,7 @@ describe('Modem', function () {
   });
 
   it('should interpret DOCKER_HOST=tcp://N.N.N.N:5555 as http', function () {
+    delete process.env.DOCKER_TLS_VERIFY;
     process.env.DOCKER_HOST = 'tcp://192.168.59.105:5555';
 
     var modem = new Modem();
@@ -48,5 +49,18 @@ describe('Modem', function () {
     assert.strictEqual(modem.host, '192.168.59.105');
     assert.strictEqual(modem.port, '5555');
     assert.strictEqual(modem.protocol, 'http');
+  });
+
+  it('should interpret DOCKER_HOST=tcp://N.N.N.N:5555 as http', function () {
+    process.env.DOCKER_TLS_VERIFY = '1';
+    process.env.DOCKER_HOST = 'tcp://192.168.59.105:5555';
+
+    var modem = new Modem();
+    assert.ok(modem.host);
+    assert.ok(modem.port);
+    assert.ok(modem.protocol);
+    assert.strictEqual(modem.host, '192.168.59.105');
+    assert.strictEqual(modem.port, '5555');
+    assert.strictEqual(modem.protocol, 'https');
   });
 });
