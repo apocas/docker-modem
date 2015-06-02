@@ -18,9 +18,9 @@
   "dependencies": {
     "debug": "~0.7.4",
     "follow-redirects": "0.0.3",
+    "jsonstream": "^1.0.3",
     "querystring": "0.2.0",
-    "readable-stream": "~1.0.26-4",
-    "JSONStream": "0.10.0"
+    "readable-stream": "~1.0.26-4"
   },
   "devDependencies": {
     "chai": "~1.7.0",
