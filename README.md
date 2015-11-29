@@ -12,7 +12,8 @@ It is the module powering (network wise) [dockerode](https://github.com/apocas/d
 
 ## Tests
 
-Tests are implemented using `mocha` and `chai`. Run them with `npm test`.
+ * Tests are implemented using `mocha` and `chai`. Run them with `npm test`.
+ * Check [dockerode](https://github.com/apocas/dockerode) tests, which is indirectly co-testing `docker-modem`.
 
 ## License
 
