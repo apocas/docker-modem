@@ -76,4 +76,19 @@ describe('Modem', function () {
     assert.strictEqual(modem.port, '5555');
     assert.strictEqual(modem.protocol, 'http');
   });
+
+  it('should auto encode querystring option maps as JSON', function () {
+    var modem = new Modem();
+
+    var opts = {
+      "limit": 12,
+      "filters": {
+        "label": ["staging", "env=green"]
+      }
+    }
+    var control = 'limit=12&filters={"label"%3A["staging"%2C"env%3Dgreen"]}'
+    var qs = modem.buildQuerystring(opts);
+    assert.strictEqual(decodeURI(qs), control);
+  });
+
 });
