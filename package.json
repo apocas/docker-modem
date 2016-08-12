@@ -6,6 +6,7 @@
   "maintainers": [
     "apocas <petermdias@gmail.com>"
   ],
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/apocas/docker-modem.git"
