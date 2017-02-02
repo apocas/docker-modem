@@ -1,7 +1,7 @@
 {
   "name": "docker-modem",
   "description": "Docker remote API network layer module.",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Pedro Dias <petermdias@gmail.com>",
   "maintainers": [
     "apocas <petermdias@gmail.com>"
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "JSONStream": "0.10.0",
-    "debug": "~0.7.4",
+    "debug": "^2.6.0",
     "readable-stream": "~1.0.26-4",
     "split-ca": "^1.0.0"
   },
