@@ -84,9 +84,10 @@ describe('Modem', function () {
       "limit": 12,
       "filters": {
         "label": ["staging", "env=green"]
-      }
+      },
+      "t": ["repo:latest", "repo:1.0.0"]
     }
-    var control = 'limit=12&filters={"label"%3A["staging"%2C"env%3Dgreen"]}'
+    var control = 'limit=12&filters={"label"%3A["staging"%2C"env%3Dgreen"]}&t=repo%3Alatest&t=repo%3A1.0.0'
     var qs = modem.buildQuerystring(opts);
     assert.strictEqual(decodeURI(qs), control);
   });
