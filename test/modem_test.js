@@ -94,4 +94,12 @@ describe('Modem', function() {
     assert.strictEqual(decodeURI(qs), control);
   });
 
+  it('should parse DOCKER_CLIENT_TIMEOUT from environment', function() {
+    process.env.DOCKER_HOST = '192.168.59.105:5555';
+    process.env.DOCKER_CLIENT_TIMEOUT = 3000;
+
+    var modem = new Modem();
+    assert.strictEqual(modem.timeout, 3000);
+  });
+
 });
