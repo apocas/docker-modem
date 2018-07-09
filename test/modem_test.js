@@ -1,4 +1,6 @@
 var assert = require('assert');
+var http = require('http');
+var https = require('https');
 var Modem = require('../lib/modem');
 
 describe('Modem', function() {
@@ -102,4 +104,49 @@ describe('Modem', function() {
     assert.strictEqual(modem.timeout, 3000);
   });
 
+  it('should use default http agent when no agent is specified', function() {
+    var modem = new Modem();
+    assert.strictEqual(modem.agent, undefined);
+  });
+
+  it('should disable http pooling when agent is false', function() {
+    var modem = new Modem({ agent: false });
+    assert.strictEqual(modem.agent, false);
+  });
+
+  it('should use custom http agent when opts are specified with http protocol', function() {
+    var modem = new Modem({ 
+      protocol: 'http',
+      agent: { keepAlive: true, kaapAliveMsecs: 8000 }
+    });
+    assert.ok(modem.agent instanceof http.Agent);
+  });
+
+  it('should use custom https agent when opts are specified with https protocol', function() {
+    var modem = new Modem({ 
+      protocol: 'https',
+      agent: { keepAlive: true, kaapAliveMsecs: 8000 }
+    });
+    assert.ok(modem.agent instanceof https.Agent);
+  });
+
+  it('should use custom http agent when opts are an http.Agent instance with http protocol', function() {
+    var agent = new http.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
+    var modem = new Modem({ 
+      protocol: 'http',
+      agent: agent
+    });
+    assert.ok(modem.agent instanceof http.Agent);
+    assert.strictEqual(modem.agent, agent);
+  });
+
+  it('should use custom http agent when opts are a https.Agent with https protocol', function() {
+    var agent = new https.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
+    var modem = new Modem({ 
+      protocol: 'https',
+      agent: agent
+    });
+    assert.ok(modem.agent instanceof https.Agent);
+    assert.strictEqual(modem.agent, agent);
+  });
 });
