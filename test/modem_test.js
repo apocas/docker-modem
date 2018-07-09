@@ -131,22 +131,22 @@ describe('Modem', function() {
   });
 
   it('should use custom http agent when opts are an http.Agent instance with http protocol', function() {
-    var agent = new http.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
+    var httpAgent = new http.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
     var modem = new Modem({ 
       protocol: 'http',
-      agent: agent
+      agent: httpAgent
     });
     assert.ok(modem.agent instanceof http.Agent);
-    assert.strictEqual(modem.agent, agent);
+    assert.strictEqual(modem.agent, httpAgent);
   });
 
   it('should use custom http agent when opts are a https.Agent with https protocol', function() {
-    var agent = new https.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
+    var httpsAgent = new https.Agent({ keepAlive: true, kaapAliveMsecs: 8000 });
     var modem = new Modem({ 
       protocol: 'https',
-      agent: agent
+      agent: httpsAgent
     });
     assert.ok(modem.agent instanceof https.Agent);
-    assert.strictEqual(modem.agent, agent);
+    assert.strictEqual(modem.agent, httpsAgent);
   });
 });
