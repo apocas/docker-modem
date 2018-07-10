@@ -106,7 +106,7 @@ describe('Modem', function() {
 
   it('should use default http agent when no agent is specified', function() {
     var modem = new Modem();
-    assert.strictEqual(modem.agent, undefined);
+    assert.strictEqual(typeof modem.agent, 'undefined');
   });
 
   it('should disable http pooling when agent is false', function() {
