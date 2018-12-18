@@ -1,15 +1,27 @@
 var assert = require('assert');
 var Modem = require('../lib/modem');
+var defaultSocketPath = require('os').type() === 'Windows_NT' ? '//./pipe/docker_engine' : '/var/run/docker.sock';
 
 describe('Modem', function() {
   beforeEach(function() {
     delete process.env.DOCKER_HOST;
   });
 
-  it('should default to /var/run/docker.sock', function() {
+  it('should default to default socket path', function() {
     var modem = new Modem();
     assert.ok(modem.socketPath);
-    assert.strictEqual(modem.socketPath, '/var/run/docker.sock');
+    assert.strictEqual(modem.socketPath, defaultSocketPath);
+  });
+
+  it('should default to default socket path with empty object argument', function() {
+    var modem = new Modem({});
+    assert.ok(modem.socketPath);
+    assert.strictEqual(modem.socketPath, defaultSocketPath);
+  });
+
+  it('should not default to default socket path with non-empty object argument', function () {
+    var modem = new Modem({a: 'b'});
+    assert.strictEqual(modem.socketPath, undefined);
   });
 
   it('should allow DOCKER_HOST=unix:///path/to/docker.sock', function() {
