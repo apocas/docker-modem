@@ -13,15 +13,13 @@ describe('Modem', function() {
     assert.strictEqual(modem.socketPath, defaultSocketPath);
   });
 
-  it('should default to default socket path with empty object argument', function() {
-    var modem = new Modem({});
+  it('should use default value if argument not defined in constructor parameter object', function () {
+    var customHeaders = {host: 'my-custom-host'};
+    var modem = new Modem({headers: customHeaders});
+    assert.ok(modem.headers);
     assert.ok(modem.socketPath);
     assert.strictEqual(modem.socketPath, defaultSocketPath);
-  });
-
-  it('should not default to default socket path with non-empty object argument', function () {
-    var modem = new Modem({a: 'b'});
-    assert.strictEqual(modem.socketPath, undefined);
+    assert.strictEqual(modem.headers, customHeaders);
   });
 
   it('should allow DOCKER_HOST=unix:///path/to/docker.sock', function() {
