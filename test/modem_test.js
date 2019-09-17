@@ -1,4 +1,5 @@
 var assert = require('assert');
+var http = require('http');
 var Modem = require('../lib/modem');
 var defaultSocketPath = require('os').type() === 'Windows_NT' ? '//./pipe/docker_engine' : '/var/run/docker.sock';
 
@@ -13,9 +14,13 @@ describe('Modem', function() {
     assert.strictEqual(modem.socketPath, defaultSocketPath);
   });
 
-  it('should use default value if argument not defined in constructor parameter object', function () {
-    var customHeaders = {host: 'my-custom-host'};
-    var modem = new Modem({headers: customHeaders});
+  it('should use default value if argument not defined in constructor parameter object', function() {
+    var customHeaders = {
+      host: 'my-custom-host'
+    };
+    var modem = new Modem({
+      headers: customHeaders
+    });
     assert.ok(modem.headers);
     assert.ok(modem.socketPath);
     assert.strictEqual(modem.socketPath, defaultSocketPath);
@@ -111,5 +116,22 @@ describe('Modem', function() {
     var modem = new Modem();
     assert.strictEqual(modem.timeout, 3000);
   });
+
+  it('should use default http agent when no agent is specified', function() {
+    var modem = new Modem();
+    assert.strictEqual(typeof modem.agent, 'undefined');
+  });
+
+  it('should use custom http agent', function() {
+    var httpAgent = new http.Agent({
+      keepAlive: true
+    });
+    var modem = new Modem({
+      agent: httpAgent
+    });
+    assert.ok(modem.agent instanceof http.Agent);
+    assert.strictEqual(modem.agent, httpAgent);
+  });
+
 
 });
