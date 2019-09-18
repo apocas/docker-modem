@@ -132,6 +132,4 @@ describe('Modem', function() {
     assert.ok(modem.agent instanceof http.Agent);
     assert.strictEqual(modem.agent, httpAgent);
   });
-
-
 });

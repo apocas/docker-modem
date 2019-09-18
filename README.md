@@ -16,7 +16,7 @@ var modem1 = new Modem({socketPath: '/var/run/docker.sock'});
 var modem2 = new Modem(); //defaults to above if env variables are not used
 var modem3 = new Modem({host: 'http://192.168.1.10', port: 3000});
 var modem4 = new Modem({protocol:'http', host: '127.0.0.1', port: 3000});
-var modem5 = new Modem({host: '127.0.0.1', port: 3000}); /
+var modem5 = new Modem({host: '127.0.0.1', port: 3000}); //defaults to http
 ```
 
 ### SSH
@@ -36,7 +36,7 @@ var modem1 = new Modem({
 
 //custom agent
 var customAgent = myOwnSSHAgent({host: 'ssh://127.0.0.1', port: 22});
-var modem1 = new Modem({
+var modem2 = new Modem({
   agent: customAgent,
 });
 ```
