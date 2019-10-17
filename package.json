@@ -1,7 +1,7 @@
 {
   "name": "docker-modem",
   "description": "Docker remote API network layer module.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Pedro Dias <petermdias@gmail.com>",
   "maintainers": [
     "apocas <petermdias@gmail.com>"
