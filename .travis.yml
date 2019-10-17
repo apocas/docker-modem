@@ -1,5 +1,8 @@
 sudo: required
 
+git:
+  quiet: true
+
 language: node_js
 
 node_js:
@@ -16,9 +19,18 @@ before_install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
+  - cd ..
+  - git clone --depth=50 --branch=master https://github.com/apocas/dockerode.git
+  - cd dockerode
+  - npm install
+  - cd ../docker-modem
 
 install:
   - npm install
 
 script:
+  - npm test
+  - cd ../dockerode
+  - rm -rf ./node_modules/docker-modem
+  - npm install git://github.com/apocas/docker-modem
   - npm test
