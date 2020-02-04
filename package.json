@@ -1,7 +1,7 @@
 {
   "name": "docker-modem",
   "description": "Docker remote API network layer module.",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "author": "Pedro Dias <petermdias@gmail.com>",
   "maintainers": [
     "apocas <petermdias@gmail.com>"
@@ -17,11 +17,10 @@
     "docker"
   ],
   "dependencies": {
-    "JSONStream": "1.3.2",
-    "debug": "^3.2.6",
-    "readable-stream": "~1.0.26-4",
-    "split-ca": "^1.0.0",
-    "ssh2": "^0.8.5"
+    "debug": "^4.1.1",
+    "readable-stream": "^3.5.0",
+    "split-ca": "^1.0.1",
+    "ssh2": "^0.8.7"
   },
   "devDependencies": {
     "chai": "~4.1.0",
@@ -33,109 +32,5 @@
   },
   "engines": {
     "node": ">= 8.0"
-  },
-  "contributors": [
-    {
-      "name": "Pedro Dias",
-      "email": "petermdias@gmail.com",
-      "url": "https://github.com/apocas",
-      "contributions": 62
-    },
-    {
-      "name": "James Lal",
-      "email": "jlal@mozilla.com",
-      "url": "https://github.com/lightsofapollo",
-      "contributions": 3
-    },
-    {
-      "name": "Matteo Collina",
-      "email": "matteo.collina@gmail.com",
-      "url": "https://github.com/mcollina",
-      "contributions": 2
-    },
-    {
-      "name": "Thorsten Lorenz",
-      "email": "thlorenz@gmx.de",
-      "url": "https://github.com/thlorenz",
-      "contributions": 2
-    },
-    {
-      "name": "Vincent Woo",
-      "email": "vincent@coderpad.io",
-      "url": "https://github.com/vincentwoo",
-      "contributions": 2
-    },
-    {
-      "name": "Clemens Stolle",
-      "email": null,
-      "url": "https://github.com/klaemo",
-      "contributions": 1
-    },
-    {
-      "name": "Everton Ribeiro",
-      "email": "nuxlli@gmail.com",
-      "url": "https://github.com/nuxlli",
-      "contributions": 1
-    },
-    {
-      "name": "Lewis J Ellis",
-      "email": "me@lewisjellis.com",
-      "url": "https://github.com/LewisJEllis",
-      "contributions": 1
-    },
-    {
-      "name": "Ilya Radchenko",
-      "email": "ilya@burstcreations.com",
-      "url": "https://github.com/knownasilya",
-      "contributions": 1
-    },
-    {
-      "name": "Csaba Palfi",
-      "email": "",
-      "url": "https://github.com/csabapalfi",
-      "contributions": 1
-    },
-    {
-      "name": "Tejesh Mehta",
-      "email": "",
-      "url": "https://github.com/tjmehta",
-      "contributions": 1
-    },
-    {
-      "name": "Mike Dillon",
-      "email": "",
-      "url": "https://github.com/md5",
-      "contributions": 1
-    },
-    {
-      "name": "Sam Rijs",
-      "email": "srijs@airpost.net",
-      "url": "https://github.com/srijs",
-      "contributions": 1
-    },
-    {
-      "name": "Stuart Knightley",
-      "email": null,
-      "url": "https://github.com/Stuk",
-      "contributions": 1
-    },
-    {
-      "name": "Niclas Hoyer",
-      "email": "",
-      "url": "https://github.com/niclashoyer",
-      "contributions": 1
-    },
-    {
-      "name": "Sascha Reuter",
-      "email": "",
-      "url": "https://github.com/sreuter",
-      "contributions": 1
-    },
-    {
-      "name": "Tim Macfarlane",
-      "email": null,
-      "url": "https://github.com/refractalize",
-      "contributions": 1
-    }
-  ]
+  }
 }
