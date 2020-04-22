@@ -169,4 +169,14 @@ describe('Modem', function() {
     assert.strictEqual(modem.sshOptions.agent, '/var/lib/sock');
     assert.strictEqual(modem.sshOptions.foo, 'bar');
   });
+
+  it('supports custom sshAuthAgent for backwards-compatibility', function() {
+    process.env.DOCKER_HOST = 'ssh://user@192.168.59.105:5555';
+    process.env.SSH_AUTH_SOCK = '/var/lib/sock';
+
+    var modem = new Modem({
+      sshAuthAgent: '/var/lib/custom_agent',
+    });
+    assert.strictEqual(modem.sshOptions.agent, '/var/lib/custom_agent');
+  });
 });
