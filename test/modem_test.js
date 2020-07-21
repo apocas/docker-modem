@@ -14,6 +14,24 @@ describe('Modem', function () {
     assert.strictEqual(modem.socketPath, defaultSocketPath);
   });
 
+  it('should use specific cert, key and ca', function () {
+    var ca = 'caaaaa';
+    var cert = 'certtttt';
+    var key = 'keyyyyy';
+    var modem = new Modem({
+      version: 'v1.39',
+      host: '127.0.0.1',
+      port: 2376,
+      ca,
+      cert,
+      key
+    });
+
+    assert.strictEqual(ca, modem.ca);
+    assert.strictEqual(cert, modem.cert);
+    assert.strictEqual(key, modem.key);
+  });
+
   it('shouldn\'t default to default socket path', function () {
     var modem = new Modem({
       protocol: 'http',
