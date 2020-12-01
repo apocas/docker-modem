@@ -172,4 +172,29 @@ describe('Modem', function () {
     assert.ok(modem.agent instanceof http.Agent);
     assert.strictEqual(modem.agent, httpAgent);
   });
+
+  it('should set default ssh agent options from DOCKER_HOST', function() {
+    process.env.DOCKER_HOST = 'ssh://user@192.168.59.105:5555';
+    process.env.SSH_AUTH_SOCK = '/var/lib/sock';
+
+    var modem = new Modem();
+    assert.strictEqual(modem.protocol, 'ssh');
+    assert.strictEqual(modem.username, 'user');
+    assert.ok(modem.sshOptions);
+    assert.strictEqual(modem.sshOptions.agent, '/var/lib/sock');
+  });
+
+  it('should combine custom ssh agent options', function() {
+    process.env.DOCKER_HOST = 'ssh://user@192.168.59.105:5555';
+    process.env.SSH_AUTH_SOCK = '/var/lib/sock';
+
+    var modem = new Modem({
+      sshOptions: {
+        foo: 'bar', // options are arbitrary, whatever ssh2 supports
+      },
+    });
+    assert.ok(modem.sshOptions);
+    assert.strictEqual(modem.sshOptions.agent, '/var/lib/sock');
+    assert.strictEqual(modem.sshOptions.foo, 'bar');
+  });
 });
