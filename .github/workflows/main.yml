@@ -45,5 +45,5 @@ jobs:
           rm -rf ./node_modules/docker-modem
           pwd
           ls ../
-          ln -s ../docker-modem ./node_modules/docker-modem
+          cp -R ../docker-modem ./node_modules/docker-modem
           npm test
