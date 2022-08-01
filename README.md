@@ -1,4 +1,4 @@
-# docker-modem [![Build Status](https://travis-ci.org/apocas/docker-modem.svg?branch=master)](https://travis-ci.org/apocas/docker-modem)
+# docker-modem
 
 [Docker](https://www.docker.com/)'s Remote API network layer module.
 
