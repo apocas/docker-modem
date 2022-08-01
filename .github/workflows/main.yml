@@ -43,5 +43,5 @@ jobs:
         run: |
           cd ../dockerode
           rm -rf ./node_modules/docker-modem
-          npm install git://github.com/apocas/docker-modem
+          ln -s ../docker-modem ./node-modules/docker-modem
           npm test
