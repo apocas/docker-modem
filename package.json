@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "chai": "~4.2.0",
-    "mocha": "^9.1.0"
+    "mocha": "^10.2.0"
   },
   "main": "./lib/modem",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha -R spec --exit"
+    "test": "./node_modules/mocha/bin/mocha.js -R spec --exit"
   },
   "engines": {
     "node": ">= 8.0"
