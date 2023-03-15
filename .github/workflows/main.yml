@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 19.x]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Provisioning
+        run: |
+          docker --version
+          node -v
+          docker pull ubuntu
+          pwd
+          cd ../
+          git clone --depth=50 --branch=master https://github.com/apocas/dockerode.git
+          cd dockerode
+          npm install
+          cd ../docker-modem
+          
+      - name: NPM install
+        run: npm install
+      
+      - name: Internal Tests
+        run: npm test
+            
+      - name: Dockerode Tests
+        run: |
+          cd ../dockerode
+          rm -rf ./node_modules/docker-modem
+          pwd
+          ls ../
+          cp -R ../docker-modem ./node_modules/docker-modem
+          npm test
