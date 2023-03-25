@@ -29,7 +29,7 @@ You can connect to the Docker daemon via SSH in two ways:
 ``` js
 //built-in SSH agent
 var modem1 = new Modem({
-  prococol: 'ssh',
+  protocol: 'ssh',
   host: 'ssh://127.0.0.1',
   port: 22
 });
