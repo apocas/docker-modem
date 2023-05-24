@@ -46,6 +46,12 @@ var modem2 = new Modem({
  * Tests are implemented using `mocha` and `chai`. Run them with `npm test`.
  * Check [dockerode](https://github.com/apocas/dockerode) tests, which is indirectly co-testing `docker-modem`.
 
+## Sponsors
+
+Amazing entities that sponsor my open-source work. Check them out!
+
+[![HTTP Toolkit](https://avatars.githubusercontent.com/u/39777515?s=100)](https://github.com/httptoolkit)
+
 ## License
 
 Pedro Dias - [@pedromdias](https://twitter.com/pedromdias)
