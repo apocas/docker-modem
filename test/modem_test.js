@@ -7,15 +7,6 @@ var Modem = require('../lib/modem');
 var unixDefaultSocketPaths = ['/var/run/docker.sock', path.join(os.homedir(), '.docker/run/docker.sock')]
 var defaultSocketPaths = os.type() === 'Windows_NT' ? ['//./pipe/docker_engine'] : unixDefaultSocketPaths;
 
-function resolveSocketPath(socketPathField) {
-  if (typeof socketPathField === 'function') {
-    return Promise.resolve(socketPathField());
-  } else {
-    // Return it as a promise, just for consistency
-    return Promise.resolve(socketPathField);
-  }
-}
-
 describe('Modem', function () {
   beforeEach(function () {
     delete process.env.DOCKER_HOST;
@@ -24,7 +15,7 @@ describe('Modem', function () {
   it('should default to default socket path', function () {
     var modem = new Modem();
 
-    return resolveSocketPath(modem.socketPath).then((socketPath) => {
+    return modem.getSocketPath().then((socketPath) => {
       assert.ok(socketPath);
       assert.ok(defaultSocketPaths.includes(socketPath));
     });
@@ -68,7 +59,7 @@ describe('Modem', function () {
     assert.ok(modem.headers);
     assert.strictEqual(modem.headers, customHeaders);
 
-    return resolveSocketPath(modem.socketPath).then((socketPath) => {
+    return modem.getSocketPath().then((socketPath) => {
       assert.ok(socketPath);
       assert.ok(defaultSocketPaths.includes(socketPath));
     });
@@ -86,7 +77,7 @@ describe('Modem', function () {
     process.env.DOCKER_HOST = 'unix://';
 
     var modem = new Modem();
-    return resolveSocketPath(modem.socketPath).then((socketPath) => {
+    return modem.getSocketPath().then((socketPath) => {
       assert.ok(socketPath);
       assert.ok(unixDefaultSocketPaths.includes(socketPath));
     });
