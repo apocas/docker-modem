@@ -1,7 +1,11 @@
 var assert = require('assert');
+var path = require('path');
+var os = require('os');
 var http = require('http');
 var Modem = require('../lib/modem');
-var defaultSocketPath = require('os').type() === 'Windows_NT' ? '//./pipe/docker_engine' : '/var/run/docker.sock';
+
+var unixDefaultSocketPaths = ['/var/run/docker.sock', path.join(os.homedir(), '.docker/run/docker.sock')]
+var defaultSocketPaths = os.type() === 'Windows_NT' ? ['//./pipe/docker_engine'] : unixDefaultSocketPaths;
 
 describe('Modem', function () {
   beforeEach(function () {
@@ -10,8 +14,11 @@ describe('Modem', function () {
 
   it('should default to default socket path', function () {
     var modem = new Modem();
-    assert.ok(modem.socketPath);
-    assert.strictEqual(modem.socketPath, defaultSocketPath);
+
+    return modem.getSocketPath().then((socketPath) => {
+      assert.ok(socketPath);
+      assert.ok(defaultSocketPaths.includes(socketPath));
+    });
   });
 
   it('should use specific cert, key and ca', function () {
@@ -50,9 +57,12 @@ describe('Modem', function () {
       headers: customHeaders
     });
     assert.ok(modem.headers);
-    assert.ok(modem.socketPath);
-    assert.strictEqual(modem.socketPath, defaultSocketPath);
     assert.strictEqual(modem.headers, customHeaders);
+
+    return modem.getSocketPath().then((socketPath) => {
+      assert.ok(socketPath);
+      assert.ok(defaultSocketPaths.includes(socketPath));
+    });
   });
 
   it('should allow DOCKER_HOST=unix:///path/to/docker.sock', function () {
@@ -67,8 +77,10 @@ describe('Modem', function () {
     process.env.DOCKER_HOST = 'unix://';
 
     var modem = new Modem();
-    assert.ok(modem.socketPath);
-    assert.strictEqual(modem.socketPath, '/var/run/docker.sock');
+    return modem.getSocketPath().then((socketPath) => {
+      assert.ok(socketPath);
+      assert.ok(unixDefaultSocketPaths.includes(socketPath));
+    });
   });
 
   it('should interpret DOCKER_HOST=tcp://N.N.N.N:2376 as https', function () {
