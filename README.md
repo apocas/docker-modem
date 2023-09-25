@@ -2,7 +2,7 @@
 
 [Docker](https://www.docker.com/)'s Remote API network layer module.
 
-`docker-modem` will help you talking with `Docker`, since it already implements all the network strategies needed to support all `Docker`'s Remote API endpoints.
+`docker-modem` will help you interacting with `Docker`, since it already implements all the network strategies needed to support all `Docker`'s Remote API endpoints.
 
 It is the module powering (network wise) [dockerode](https://github.com/apocas/dockerode) and other modules.
 
