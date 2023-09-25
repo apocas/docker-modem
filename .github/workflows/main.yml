@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_nodejs:
     runs-on: ubuntu-latest
     
     strategy:
@@ -47,3 +47,37 @@ jobs:
           ls ../
           cp -R ../docker-modem ./node_modules/docker-modem
           npm test
+  
+  build_bun:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+    
+      - name: Provisioning
+        run: |
+          docker --version
+          bun -v
+          docker pull ubuntu
+          pwd
+          cd ../
+          git clone --depth=50 --branch=master https://github.com/apocas/dockerode.git
+          cd dockerode
+          bun install
+          cd ../docker-modem
+
+      - name: Bun install
+        run: bun install
+
+      - name: Internal Tests
+        run: bun run test
+            
+      - name: Dockerode Tests
+        run: |
+          cd ../dockerode
+          rm -rf ./node_modules/docker-modem
+          pwd
+          ls ../
+          cp -R ../docker-modem ./node_modules/docker-modem
+          bun run test
