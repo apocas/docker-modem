@@ -83,6 +83,26 @@ describe('Modem', function () {
     });
   });
 
+  it('should use custom socketPath function once', function () {
+    process.env.DOCKER_HOST = 'unix://';
+
+    var count = 0;
+
+    var modem = new Modem();
+    modem.socketPath = function() {
+      assert(++count === 1);
+      return 'testpath';
+    }
+    modem.getSocketPath().then((socketPath) => {
+      assert.ok(socketPath);
+      assert.ok('testpath');
+    });
+    return modem.getSocketPath().then((socketPath) => {
+      assert.ok(socketPath);
+      assert.ok('testpath');
+    });
+  });
+
   it('should interpret DOCKER_HOST=tcp://N.N.N.N:2376 as https', function () {
     process.env.DOCKER_HOST = 'tcp://192.168.59.103:2376';
 
