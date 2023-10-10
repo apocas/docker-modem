@@ -84,10 +84,7 @@ describe('Modem', function () {
   });
 
   it('should use custom socketPath function once', function () {
-    process.env.DOCKER_HOST = 'unix://';
-
     var count = 0;
-
     var modem = new Modem();
     modem.socketPath = function() {
       assert(++count === 1);
