@@ -70,6 +70,7 @@ describe('Modem', function () {
 
     var modem = new Modem();
     assert.ok(modem.socketPath);
+    assert.strictEqual(modem.host, undefined);
     assert.strictEqual(modem.socketPath, '/tmp/docker.sock');
   });
 
