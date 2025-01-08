@@ -170,13 +170,30 @@ describe('Modem', function () {
     var opts = {
       "limit": 12,
       "filters": {
-        "label": ["staging", "env=green"]
+        "label": [
+          "staging",
+          "env=green",
+        ],
       },
-      "t": ["repo:latest", "repo:1.0.0"]
+      "t": [
+        "repo:latest",
+        "repo:1.0.0",
+      ],
+      /* From /create/image */
+      changes: [
+        'WORKDIR /app',
+        'EXPOSE 80',
+        'ENTRYPOINT ["node"]',
+        'CMD ["app.js"]',
+        'USER root',
+        'ENV NODE_ENV=production',
+        'ENV SOME_PASSWORD=dockerpassword',
+      ]
     };
-    var control = 'limit=12&filters={"label"%3A["staging"%2C"env%3Dgreen"]}&t=repo%3Alatest&t=repo%3A1.0.0';
+    var control = 'limit=12&filters={"label"%3A["staging"%2C"env%3Dgreen"]}&t=repo%3Alatest&t=repo%3A1.0.0&changes=WORKDIR %2Fapp&changes=EXPOSE 80&changes=ENTRYPOINT ["node"]&changes=CMD ["app.js"]&changes=USER root&changes=ENV NODE_ENV%3Dproduction&changes=ENV SOME_PASSWORD%3Ddockerpassword';
     var qs = modem.buildQuerystring(opts);
     assert.strictEqual(decodeURI(qs), control);
+
   });
 
   it('should parse DOCKER_CLIENT_TIMEOUT from environment', function () {
