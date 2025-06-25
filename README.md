@@ -51,6 +51,7 @@ var modem2 = new Modem({
 Amazing entities that [sponsor](https://github.com/sponsors/apocas) my open-source work. Check them out!
 
 [![HTTP Toolkit](https://avatars.githubusercontent.com/u/39777515?s=100)](https://github.com/httptoolkit)
+[![OOMOL - Oomol AI Studio](https://avatars.githubusercontent.com/u/146153906?s=100)](https://oomol.com)
 
 ## License
 
