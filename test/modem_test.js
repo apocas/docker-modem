@@ -3,7 +3,7 @@ var path = require('node:path');
 var os = require('node:os');
 var http = require('node:http');
 var { describe, it, beforeEach } = require('node:test');
-var Modem = require('../lib/modem');
+var Modem = require('../src/modem');
 
 var unixDefaultSocketPaths = ['/var/run/docker.sock', path.join(os.homedir(), '.docker/run/docker.sock')]
 var defaultSocketPaths = os.type() === 'Windows_NT' ? ['//./pipe/docker_engine'] : unixDefaultSocketPaths;
